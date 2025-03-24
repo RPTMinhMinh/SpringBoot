@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping
+@Controller // khai báo đây là 1 controller sẽ trả về view html
+@RequestMapping("/cms") // làm gốc url cho tất cả các method trong controller
 public class DashBoardController {
-    @GetMapping("/cms/dashboard")
-    public String dashboard() {
+
+    @GetMapping("/dashboard")
+    public String getDashboard() {
         return "cms/index";
     }
 }
