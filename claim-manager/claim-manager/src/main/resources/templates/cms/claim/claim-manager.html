@@ -61,11 +61,11 @@
                             <label for="trang-thai-yeu-cau">Trạng thái yêu cầu</label>
                             <select id="trang-thai-yeu-cau" class="form-control">
                                 <option value="">Tất cả trạng thái</option>
-                                <option value="Đang xử lý">Đang xử lý</option>
-                                <option value="Hoàn thành">Hoàn thành</option>
-                                <option value="Đã lên lịch">Đã lên lịch</option>
-                                <option value="Đang chờ">Đang chờ</option>
-                                <option value="Bị từ chối">Bị từ chối</option>
+                                <option value="Khởi tạo">Khởi tạo</option>
+                                <option value="Nhân viên đang xử lý">Nhân viên đang xử lý</option>
+                                <option value="Nhân viên đã xác minh">Nhân viên đã xác minh</option>
+                                <option value="Thông tin chưa chính xác">Thông tin chưa chính xác</option>
+                                <option value="Chập nhận bồi thường">Chập nhận bồi thường</option>
                             </select>
                         </div>
                     </div>
@@ -90,52 +90,52 @@
                                     <th>Trạng thái yêu cầu</th>
                                 </tr>
                                 </thead>
-                                <tbody class="table-border-bottom-0">
-                                <tr>
-                                    <td><input type="checkbox" class="recordCheckbox"></td>
-                                    <td><strong>CL001</strong></td>
-                                    <td>Nguyễn Văn A</td>
-                                    <td>Bảo hiểm xe máy</td>
-                                    <td>2024-07-10</td>
-                                    <td>Hư hỏng phần đầu xe do tai nạn</td>
-                                    <td><span class="badge bg-label-primary me-1">Đang xử lý</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="recordCheckbox"></td>
-                                    <td><strong>CL002</strong></td>
-                                    <td>Trần Thị B</td>
-                                    <td>Bảo hiểm nhà cửa</td>
-                                    <td>2024-06-25</td>
-                                    <td>Thiệt hại do cháy</td>
-                                    <td><span class="badge bg-label-success me-1">Hoàn thành</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="recordCheckbox"></td>
-                                    <td><strong>CL003</strong></td>
-                                    <td>Lê Thị C</td>
-                                    <td>Bảo hiểm sức khỏe</td>
-                                    <td>2024-05-15</td>
-                                    <td>Chi phí khám bệnh</td>
-                                    <td><span class="badge bg-label-info me-1">Đã lên lịch</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="recordCheckbox"></td>
-                                    <td><strong>CL004</strong></td>
-                                    <td>Phạm Văn D</td>
-                                    <td>Bảo hiểm du lịch</td>
-                                    <td>2024-04-20</td>
-                                    <td>Hủy chuyến đi do dịch bệnh</td>
-                                    <td><span class="badge bg-label-warning me-1">Đang chờ</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="recordCheckbox"></td>
-                                    <td><strong>CL005</strong></td>
-                                    <td>Đỗ Thị E</td>
-                                    <td>Bảo hiểm nhân thọ</td>
-                                    <td>2024-03-10</td>
-                                    <td>Chi phí điều trị bệnh hiểm nghèo</td>
-                                    <td><span class="badge bg-label-danger me-1">Bị từ chối</span></td>
-                                </tr>
+                                <tbody class="table-border-bottom-0" id="render-data">
+<!--                                <tr>-->
+<!--                                    <td><input type="checkbox" class="recordCheckbox"></td>-->
+<!--                                    <td><strong>CL001</strong></td>-->
+<!--                                    <td>Nguyễn Văn A</td>-->
+<!--                                    <td>Bảo hiểm xe máy</td>-->
+<!--                                    <td>2024-07-10</td>-->
+<!--                                    <td>Hư hỏng phần đầu xe do tai nạn</td>-->
+<!--                                    <td><span class="badge bg-label-primary me-1">Đang xử lý</span></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td><input type="checkbox" class="recordCheckbox"></td>-->
+<!--                                    <td><strong>CL002</strong></td>-->
+<!--                                    <td>Trần Thị B</td>-->
+<!--                                    <td>Bảo hiểm nhà cửa</td>-->
+<!--                                    <td>2024-06-25</td>-->
+<!--                                    <td>Thiệt hại do cháy</td>-->
+<!--                                    <td><span class="badge bg-label-success me-1">Hoàn thành</span></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td><input type="checkbox" class="recordCheckbox"></td>-->
+<!--                                    <td><strong>CL003</strong></td>-->
+<!--                                    <td>Lê Thị C</td>-->
+<!--                                    <td>Bảo hiểm sức khỏe</td>-->
+<!--                                    <td>2024-05-15</td>-->
+<!--                                    <td>Chi phí khám bệnh</td>-->
+<!--                                    <td><span class="badge bg-label-info me-1">Đã lên lịch</span></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td><input type="checkbox" class="recordCheckbox"></td>-->
+<!--                                    <td><strong>CL004</strong></td>-->
+<!--                                    <td>Phạm Văn D</td>-->
+<!--                                    <td>Bảo hiểm du lịch</td>-->
+<!--                                    <td>2024-04-20</td>-->
+<!--                                    <td>Hủy chuyến đi do dịch bệnh</td>-->
+<!--                                    <td><span class="badge bg-label-warning me-1">Đang chờ</span></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td><input type="checkbox" class="recordCheckbox"></td>-->
+<!--                                    <td><strong>CL005</strong></td>-->
+<!--                                    <td>Đỗ Thị E</td>-->
+<!--                                    <td>Bảo hiểm nhân thọ</td>-->
+<!--                                    <td>2024-03-10</td>-->
+<!--                                    <td>Chi phí điều trị bệnh hiểm nghèo</td>-->
+<!--                                    <td><span class="badge bg-label-danger me-1">Bị từ chối</span></td>-->
+<!--                                </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -144,20 +144,20 @@
     margin-top: 2%;
     padding-right: 2%;
 ">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
+                                <ul class="pagination" id="pagination">
+<!--                                    <li class="page-item">-->
+<!--                                        <a class="page-link" href="#" aria-label="Previous">-->
+<!--                                            <span aria-hidden="true">&laquo;</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                                    <li class="page-item">-->
+<!--                                        <a class="page-link" href="#" aria-label="Next">-->
+<!--                                            <span aria-hidden="true">&raquo;</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
                                 </ul>
                             </nav>
                         </div>
@@ -181,62 +181,143 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Lấy tất cả các thẻ th có nội dung là "Mã yêu cầu bồi thường"
-        const thElements = document.querySelectorAll('th');
+    const renderData = document.getElementById('render-data');
+    const searchButton = document.getElementById('search-button');
+    const pagination = document.getElementById('pagination');
+    let currentPage;
+    let totalPages;
+    const pageSize = 3;
 
-        thElements.forEach(th => {
-            if (th.textContent.trim() === 'Mã yêu cầu bồi thường') {
-                // Lấy tất cả các td trong cùng cột với th này
-                const thIndex = Array.from(th.parentNode.children).indexOf(th);
-                const tdElements = document.querySelectorAll('tbody tr td:nth-child(' + (thIndex + 1) + ')');
+    function render(page = 0){
+        const codeClaim = document.getElementById('search-ma-yeu-cau').value;
+        const fromDate = document.getElementById('from-date').value;
+        const toDate = document.getElementById('to-date').value;
+        const statusClaim = document.getElementById('trang-thai-yeu-cau').value;
 
-                tdElements.forEach(td => {
-                    // Bọc nội dung của td trong thẻ a
-                    const a = document.createElement('a');
-                    a.href = 'detail-claim.html';
-                    a.textContent = td.textContent;
-                    td.textContent = '';
-                    td.appendChild(a);
-                });
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Lấy các ô input và dropdown
-        const searchMaYeuCau = document.getElementById('search-ma-yeu-cau');
-        const fromDate = document.getElementById('from-date');
-        const toDate = document.getElementById('to-date');
-        const trangThaiYeuCau = document.getElementById('trang-thai-yeu-cau');
-        const searchButton = document.getElementById('search-button');
-
-        // Hàm lọc dữ liệu
-        function filterTable() {
-            const maYeuCauValue = searchMaYeuCau.value.toLowerCase();
-            const fromDateValue = fromDate.value;
-            const toDateValue = toDate.value;
-            const trangThaiValue = trangThaiYeuCau.value;
-
-            const rows = document.querySelectorAll('tbody tr');
-            rows.forEach(row => {
-                const maYeuCau = row.cells[1].textContent.toLowerCase();
-                const ngayGuiYeuCau = row.cells[4].textContent;
-                const trangThai = row.cells[6].textContent;
-
-                const showRow =
-                    (maYeuCau.includes(maYeuCauValue)) &&
-                    (!fromDateValue || new Date(ngayGuiYeuCau) >= new Date(fromDateValue)) &&
-                    (!toDateValue || new Date(ngayGuiYeuCau) <= new Date(toDateValue)) &&
-                    (!trangThaiValue || trangThai === trangThaiValue);
-
-                row.style.display = showRow ? '' : 'none';
-            });
+        let api = `http://localhost:8080/api/claim?page=${page}&size=${pageSize}`;
+        if(codeClaim){
+            api += `&claimCode=${codeClaim}`
+        }
+        if (fromDate){
+            api += `&fromDate=${fromDate}`
+        }
+        if (toDate){
+            api += `&toDate=${toDate}`
+        }
+        if (statusClaim){
+            api += `&codeStatus=${statusClaim}`
         }
 
-        // Thêm sự kiện lắng nghe nút tìm kiếm
-        searchButton.addEventListener('click', filterTable);
+        fetch(api).then((res) => res.json()).then(data => {
+            console.log('response: ', data);
+            totalPages = data.totalPage;
+            currentPage = data.pageIndex;
+            const dataClaim = data.data;
+            console.log(dataClaim);
+            let claimList = '';
+            for(let data of dataClaim){
+                claimList += `
+                    <tr>
+                                  <td><input type="checkbox" class="recordCheckbox"></td>
+                                  <td><strong>${data.code}</strong></td>
+                                  <td>${data.customerName}</td>
+                                  <td>${data.nameProduct}</td>
+                                  <td>${data.claimDate}</td>
+                                  <td>${data.coverageProduct}</td>
+                                  <td><span class="badge bg-label-info me-1">${data.statusName}</span></td>
+                    </tr>
+                `
+            }
+            renderData.innerHTML = claimList;
+            renderPagination();
+        })
+    }
+
+    function renderPagination() {
+        let paginationHtml = '';
+        paginationHtml += `<li class="page-item ${currentPage === 0 ? 'disabled' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">&laquo;</a>
+    </li>`;
+
+        for (let i = 0; i < totalPages; i++) {
+            paginationHtml += `<li class="page-item ${i === currentPage ? 'active' : ''}">
+            <a class="page-link" href="#" onclick="changePage(${i})">${i + 1}</a>
+        </li>`;
+        }
+        paginationHtml += `<li class="page-item ${currentPage === totalPages - 1 ? 'disabled' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">&raquo;</a>
+    </li>`;
+
+        pagination.innerHTML = paginationHtml;
+    }
+
+    function changePage(page) {
+        if (page >= 0 && page < totalPages) {
+            render(page);
+        }
+    }
+
+    searchButton.addEventListener('click', function () {
+        render(0);
     });
+
+    render();
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     // Lấy tất cả các thẻ th có nội dung là "Mã yêu cầu bồi thường"
+    //     const thElements = document.querySelectorAll('th');
+    //
+    //     thElements.forEach(th => {
+    //         if (th.textContent.trim() === 'Mã yêu cầu bồi thường') {
+    //             // Lấy tất cả các td trong cùng cột với th này
+    //             const thIndex = Array.from(th.parentNode.children).indexOf(th);
+    //             const tdElements = document.querySelectorAll('tbody tr td:nth-child(' + (thIndex + 1) + ')');
+    //
+    //             tdElements.forEach(td => {
+    //                 // Bọc nội dung của td trong thẻ a
+    //                 const a = document.createElement('a');
+    //                 a.href = 'detail-claim.html';
+    //                 a.textContent = td.textContent;
+    //                 td.textContent = '';
+    //                 td.appendChild(a);
+    //             });
+    //         }
+    //     });
+    // });
+    //
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     const searchMaYeuCau = document.getElementById('search-ma-yeu-cau');
+    //     const fromDate = document.getElementById('from-date');
+    //     const toDate = document.getElementById('to-date');
+    //     const trangThaiYeuCau = document.getElementById('trang-thai-yeu-cau');
+    //     const searchButton = document.getElementById('search-button');
+    //
+    //     // Hàm lọc dữ liệu
+    //     function filterTable() {
+    //         const maYeuCauValue = searchMaYeuCau.value.toLowerCase();
+    //         const fromDateValue = fromDate.value;
+    //         const toDateValue = toDate.value;
+    //         const trangThaiValue = trangThaiYeuCau.value;
+    //
+    //         const rows = document.querySelectorAll('tbody tr');
+    //         rows.forEach(row => {
+    //             const maYeuCau = row.cells[1].textContent.toLowerCase();
+    //             const ngayGuiYeuCau = row.cells[4].textContent;
+    //             const trangThai = row.cells[6].textContent;
+    //
+    //             const showRow =
+    //                 (maYeuCau.includes(maYeuCauValue)) &&
+    //                 (!fromDateValue || new Date(ngayGuiYeuCau) >= new Date(fromDateValue)) &&
+    //                 (!toDateValue || new Date(ngayGuiYeuCau) <= new Date(toDateValue)) &&
+    //                 (!trangThaiValue || trangThai === trangThaiValue);
+    //
+    //             row.style.display = showRow ? '' : 'none';
+    //         });
+    //     }
+    //
+    //     // Thêm sự kiện lắng nghe nút tìm kiếm
+    //     searchButton.addEventListener('click', filterTable);
+    // });
 </script>
 
 </body>

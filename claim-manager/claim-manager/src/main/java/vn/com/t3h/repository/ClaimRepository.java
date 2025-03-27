@@ -27,7 +27,7 @@ public interface ClaimRepository extends JpaRepository<ClaimEntity,Long> {
             + " where (:claimCode is null or c.code = :claimCode) " +
             "and (:fromDate is null or c.claimDate >= :fromDate) " +
             "and (:toDate is null or c.claimDate <= :toDate)" +
-            "and (:statusCode is null or status.code = :statusCode)"
+            "and (:statusCode is null or status.description = :statusCode)"
     )
     Page<ClaimEntity> findCondition(
             @Param("claimCode")String claimCode,
