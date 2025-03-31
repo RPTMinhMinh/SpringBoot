@@ -3,15 +3,11 @@ package vn.com.t3h.controller.resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.com.t3h.service.UserService;
 import vn.com.t3h.service.dto.UserDTO;
 import vn.com.t3h.service.dto.response.BaseResponse;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,10 +19,17 @@ public class UserResource {
 
     @GetMapping("/list")
     public ResponseEntity<BaseResponse<List<UserDTO>>> getAllUsers(@RequestParam(required = false) String code,
-                                                                   @RequestParam(required = false) LocalDateTime createDate,
-                                                                   @RequestParam(required = false) String address,
+                                                                   @RequestParam(required = false) LocalDateTime fromDate,
+                                                                   @RequestParam(required = false) LocalDateTime toDate,
+                                                                   @RequestParam(required = false) String phone,
                                                                    Pageable pageable) {
-        BaseResponse<List<UserDTO>> response = userService.getAllUsers(code, createDate, address, pageable);
+        BaseResponse<List<UserDTO>> response = userService.getAllUsers(code, fromDate, toDate, phone, pageable);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<BaseResponse<UserDTO>> saveUser(@RequestBody UserDTO userDTO) {
+        BaseResponse<UserDTO> response = userService.saveUser(userDTO);
         return ResponseEntity.ok(response);
     }
 }

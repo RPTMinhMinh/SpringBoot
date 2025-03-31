@@ -31,7 +31,7 @@
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <h4 class="fw-bold py-3 mb-4 d-flex justify-content-between align-items-center">
-                        <span><span class="text-muted fw-light">Claim manager /</span> List claim</span>
+                        <span><span class="text-muted fw-light">User manager /</span> List user</span>
                         <div>
                             <button class="btn btn-primary btn-sm"><i class="bx bx-check-circle me-1"></i> Đã tiếp nhận
                             </button>
@@ -45,9 +45,9 @@
                     </h4>
                     <div class="row mb-3">
                         <div class="col-md-3">
-                            <label for="search-ma-yeu-cau">Mã yêu cầu bồi thường</label>
+                            <label for="search-ma-yeu-cau">Mã người dùng</label>
                             <input type="text" id="search-ma-yeu-cau" class="form-control"
-                                   placeholder="Nhập mã yêu cầu">
+                                   placeholder="Nhập mã người dùng">
                         </div>
                         <div class="col-md-3">
                             <label for="from-date">Từ ngày</label>
@@ -58,20 +58,17 @@
                             <input type="date" id="to-date" class="form-control">
                         </div>
                         <div class="col-md-3">
-                            <label for="trang-thai-yeu-cau">Trạng thái yêu cầu</label>
-                            <select id="trang-thai-yeu-cau" class="form-control">
-                                <option value="">Tất cả trạng thái</option>
-                                <option value="Khởi tạo">Khởi tạo</option>
-                                <option value="Nhân viên đang xử lý">Nhân viên đang xử lý</option>
-                                <option value="Nhân viên đã xác minh">Nhân viên đã xác minh</option>
-                                <option value="Thông tin chưa chính xác">Thông tin chưa chính xác</option>
-                                <option value="Chập nhận bồi thường">Chập nhận bồi thường</option>
-                            </select>
+                            <label for="search-ma-yeu-cau">SDT</label>
+                            <input type="text" id="phone" class="form-control"
+                                   placeholder="Nhập mã yêu cầu">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12 text-right">
                             <button id="search-button" class="btn btn-primary">Tìm kiếm</button>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button id="create-button" onclick=navigateToCreateUser() class="btn btn-primary">Thêm mới user</button>
                         </div>
                     </div>
 
@@ -82,12 +79,13 @@
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" id="selectAll"></th>
-                                    <th>Mã yêu cầu bồi thường</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Tên sản phẩm bảo hiểm</th>
-                                    <th>Ngày gửi yêu cầu</th>
-                                    <th>Mô tả yêu cầu</th>
-                                    <th>Trạng thái yêu cầu</th>
+                                    <th>Mã người dùng</th>
+                                    <th>Ảnh đại diện</th>
+                                    <th>Username</th>
+                                    <th>Họ tên</th>
+                                    <th>SDT</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Địa chỉ</th>
                                 </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0" id="render-data">
@@ -179,7 +177,8 @@
 <script src="../assets/vendor/js/menu.js"></script>
 <script src="../assets/js/main.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-<script src="../js/claim.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="../js/user.js"></script>
 
 </body>
 </html>

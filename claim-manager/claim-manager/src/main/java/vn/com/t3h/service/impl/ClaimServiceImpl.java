@@ -14,6 +14,7 @@ import vn.com.t3h.service.ClaimService;
 import vn.com.t3h.service.dto.ClaimDTO;
 import vn.com.t3h.service.dto.DetailClaimDTO;
 import vn.com.t3h.service.dto.response.BaseResponse;
+import vn.com.t3h.service.dto.response.ResponsePage;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,15 +25,14 @@ public class ClaimServiceImpl implements ClaimService {
 
     @Autowired
     private ClaimRepository claimRepository;
-
     @Autowired
     private ClaimMapper claimMapper;
     @Autowired
     private DetailClaimMapper detailMapper;
 
     @Override
-    public BaseResponse<List<ClaimDTO>> getAllClaims(String claimCode, LocalDate fromDate, LocalDate toDate, String codeStatus, Pageable pageable) {
-        BaseResponse<List<ClaimDTO>> response = new BaseResponse<>();
+    public ResponsePage<List<ClaimDTO>> getAllClaims(String claimCode, LocalDate fromDate, LocalDate toDate, String codeStatus, Pageable pageable) {
+        ResponsePage<List<ClaimDTO>> response = new ResponsePage<>();
         if (StringUtils.isEmpty(claimCode)){
             claimCode = null;
         }
@@ -52,8 +52,8 @@ public class ClaimServiceImpl implements ClaimService {
     }
 
     @Override
-    public BaseResponse<List<DetailClaimDTO>> getClaimDetail(Pageable pageable) {
-        BaseResponse<List<DetailClaimDTO>> response = new BaseResponse<>();
+    public ResponsePage<List<DetailClaimDTO>> getClaimDetail(Pageable pageable) {
+        ResponsePage<List<DetailClaimDTO>> response = new ResponsePage<>();
         Page<ClaimEntity> page = claimRepository.getAllClaims(pageable);
         List<DetailClaimDTO> detailDTOS = page.stream().map(detailMapper::toDto).toList();
         response.setPageIndex(pageable.getPageNumber());
