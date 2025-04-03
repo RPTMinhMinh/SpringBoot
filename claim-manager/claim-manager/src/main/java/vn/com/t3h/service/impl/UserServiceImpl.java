@@ -22,10 +22,12 @@ import vn.com.t3h.utils.ImageUtils;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userMapper;
 
@@ -87,5 +89,54 @@ public class UserServiceImpl implements UserService {
         userEntity.setRoles(roleEntities);
     }
 
+    @Override
+    public BaseResponse<UserDTO> findById(Long id) {
+        BaseResponse<UserDTO> response = new BaseResponse<>();
+        UserEntity userEntity = userRepository.findById(id).orElse(null);
+        if (userEntity == null) {
+            response.setCode(HttpStatus.NOT_FOUND.value());
+            response.setMessage(HttpStatus.NOT_FOUND.name());
+            return response;
+        }
+        response.setData(userMapper.toDto(userEntity, imageUtils));
+        response.setMessage("thanh cong!");
+        response.setCode(HttpStatus.OK.value());
+        return response;
+    }
+
+    @Override
+    public BaseResponse<UserDTO> updateUser(Long id, UserDTO userDto) {
+        String pathFileAvatar = imageUtils.saveImageAvatar(userDto);
+        String convertImageToBase64 = imageUtils.convertImageToBase64(pathFileAvatar);
+
+        BaseResponse<UserDTO> response = new BaseResponse<>();
+        Optional<UserEntity> user = userRepository.findById(id);
+        if (user.isEmpty()) {
+            response.setCode(HttpStatus.NOT_FOUND.value());
+            response.setMessage(HttpStatus.NOT_FOUND.name());
+            return response;
+        }
+        UserEntity userEntity = user.get();
+        userEntity.setDeleted(false);
+        userEntity.setUsername(userDto.getUsername());
+        userEntity.setPassword(userDto.getPassword());
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setPhone(userDto.getPhone());
+        userEntity.setFirstName(userDto.getFirstName());
+        userEntity.setLastName(userDto.getLastName());
+        userEntity.setAddress(userDto.getAddress());
+
+        userEntity.setPathAvatar(pathFileAvatar);
+
+        userEntity = userRepository.save(userEntity);
+
+        UserDTO userDTO = userMapper.toDto(userEntity, imageUtils);
+        userDTO.setStringBase64Avatar(convertImageToBase64);
+
+        response.setData(userDTO);
+        response.setMessage("thanh cong!");
+        response.setCode(HttpStatus.OK.value());
+        return response;
+    }
 
 }

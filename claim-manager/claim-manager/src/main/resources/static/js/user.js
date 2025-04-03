@@ -2,6 +2,10 @@ function navigateToCreateUser(){
     window.location.href = 'http://localhost:8080/cms/create-user';
 }
 
+function navigateToDetailUser(userId) {
+    window.location.href = `http://localhost:8080/cms/detail-user?id=${userId}`
+}
+
 const renderData = document.getElementById('render-data');
 const searchButton = document.getElementById('search-button');
 const pagination = document.getElementById('pagination');
@@ -44,7 +48,7 @@ function renderUser(page = 0){
                     <tr>
                                   <td><input type="checkbox" class="recordCheckbox"></td>
                                   <td><strong>${data.code}</strong></td>
-                                  <td><img src="data:image/jpeg;base64,${data.stringBase64Avatar}" alt="Avatar" style="width: 50px; height: 50px;"></td>
+                                  <td><img src="data:image/jpeg;base64,${data.stringBase64Avatar}" onclick="navigateToDetailUser(${data.id})" alt="Avatar" style="width: 50px; height: 50px;"></td>
                                   <td>${data.username}</td>
                                   <td>${data.firstName + " " + data.lastName}</td>
                                   <td>${data.phone}</td>

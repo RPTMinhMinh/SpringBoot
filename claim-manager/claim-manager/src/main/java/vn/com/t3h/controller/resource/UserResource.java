@@ -32,4 +32,16 @@ public class UserResource {
         BaseResponse<UserDTO> response = userService.saveUser(userDTO);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<BaseResponse<UserDTO>> getUserById(@PathVariable Long id) {
+        BaseResponse<UserDTO> response = userService.findById(id);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<BaseResponse<UserDTO>> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        BaseResponse<UserDTO> response = userService.updateUser(id, userDTO);
+        return ResponseEntity.ok(response);
+    }
 }
