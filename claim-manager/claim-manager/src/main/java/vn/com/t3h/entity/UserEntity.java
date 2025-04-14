@@ -22,8 +22,11 @@ public class UserEntity extends BaseEntity {
     private String phone;
     private String address;
     private String pathAvatar;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+/*
+FetchType.EAGER
+FetchType.LAZY
+ */
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

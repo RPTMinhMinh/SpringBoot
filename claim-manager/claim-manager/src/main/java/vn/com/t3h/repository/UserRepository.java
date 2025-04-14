@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
                                      @Param("toDate") LocalDateTime toDate,
                                      @Param("phone") String phone,
                                      Pageable pageable);
+
+    UserEntity findByUsername(String username); //FetchType.EAGER
 }

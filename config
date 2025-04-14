@@ -92,3 +92,11 @@ spring.datasource.hikari.maximum-pool-size=10
 
 		</plugins>
 	</build>
+
+
+//security
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
