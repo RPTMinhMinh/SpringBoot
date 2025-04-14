@@ -2648,12 +2648,16 @@
                 <div class="col login-trigger linkOnly login-trigger--minimized" title="Tài khoản"
                      data-target="login-container">
                     <a id="vn__global-loginPagePath" class="login-trigger__label"
-                           href="http://localhost:8080/login" target="_self" aria-label="Tài khoản">
-                        <svg class="icon icon-profile2" aria-hidden="true">
-                        </svg>
-                        <span>Tài khoản</span>
-                        <span></span>
+                       href="http://localhost:8080/login" target="_self" aria-label="Tài khoản">
+                        <svg class="icon icon-profile2" aria-hidden="true"></svg>
+                        <span th:if="${session.username == null}">Tài khoản</span>
+                        <span th:unless="${session.username == null}" th:text="${session.username}"></span>
                     </a>
+                    <form th:if="${session.username != null}" th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-link" style="padding: 0; border: none; background: none;">
+                            Đăng xuất
+                        </button>
+                    </form>
                 </div>
 
 
